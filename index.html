@@ -20,18 +20,7 @@
     --glass-bright: rgba(255,255,255,0.12);
 }
 
-/* THEME SET 1 — Purple Cyber */
-[data-theme="cyber-purple"] {
-    --bg: #0b0f19;
-    --text: #e6f1ff;
-    --text-body: #ffffff;
-    --accent: #7f5cff;
-    --accent2: #4acfff;
-    --glass: rgba(255,255,255,0.05);
-    --glass-bright: rgba(255,255,255,0.12);
-}
-
-/* THEME SET 2 — Neon Blue */
+/* THEME SET 1 — Neon Blue */
 [data-theme="neon-blue"] {
     --bg: #020617;
     --text: #dbeafe;
@@ -42,18 +31,18 @@
     --glass-bright: rgba(255,255,255,0.14);
 }
 
-/* THEME SET 3 — Magenta Shock */
+/* THEME SET 2 — Magenta Shock */
 [data-theme="magenta"] {
-    --bg: #160010;
-    --text: #ffd6f6;
+    --bg: #16000f;
+    --text: #ffe6f2;
     --text-body: #ffffff;
-    --accent: #ff007f;
-    --accent2: #ff4db8;
+    --accent: #e6006f;
+    --accent2: #ff5fa8;
     --glass: rgba(255,255,255,0.05);
     --glass-bright: rgba(255,255,255,0.13);
 }
 
-/* THEME SET 4 — Teal Aura */
+/* THEME SET 3 — Teal Aura */
 [data-theme="teal"] {
     --bg: #00211f;
     --text: #e0fffa;
@@ -736,7 +725,7 @@ tiltCards.forEach(card => {
 </script>
 
 <script>
-const themes = ["cyber-purple", "neon-blue", "magenta", "teal"];
+const themes = ["neon-blue", "magenta", "teal"];
 
 function applyRandomTheme() {
     const theme = themes[Math.floor(Math.random() * themes.length)];

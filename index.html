@@ -5,297 +5,591 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Anisha Katiyar | Portfolio</title>
 
-<!-- GOOGLE FONTS -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-<!-- FAVICON -->
 <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/0/0a/UMD_Teratoma_Logo.png" />
 
 <style>
-/* ROOT VARIABLES */
+
+/* ROOT THEMES */
 :root {
-    --bg: #f5f5f7;
-    --text: #1a1a1a;
-    --card-bg: rgba(255,255,255,0.65);
-    --glass: rgba(255,255,255,0.2);
-    --accent: #6a11cb;
-    --shadow: rgba(0,0,0,0.08);
+    --bg: #0b0f19;
+    --text: #e6f1ff;
+    --accent: #7f5cff;
+    --accent2: #4acfff;
+    --glass: rgba(255,255,255,0.05);
+    --glass-bright: rgba(255,255,255,0.12);
+    --card-bg: rgba(255,255,255,0.07);
+    --shadow: rgba(0,0,0,0.45);
+    --grid-line: rgba(255,255,255,0.05);
 }
 
-[data-theme="dark"] {
-    --bg: #0d1117;
-    --text: #e6edf3;
-    --card-bg: rgba(22,27,34,0.55);
-    --glass: rgba(255,255,255,0.05);
-    --accent: #9b6cff;
-    --shadow: rgba(0,0,0,0.3);
+[data-theme="light"] {
+    --bg: #f4f7ff;
+    --text: #1a1a1a;
+    --accent: #6a11cb;
+    --accent2: #2575fc;
+    --glass: rgba(0,0,0,0.04);
+    --glass-bright: rgba(0,0,0,0.12);
+    --card-bg: rgba(0,0,0,0.06);
+    --grid-line: rgba(0,0,0,0.08);
 }
 
 body {
     margin:0;
-    font-family:'Inter', sans-serif;
+    font-family:'Inter',sans-serif;
     background:var(--bg);
     color:var(--text);
-    transition:0.3s;
+    overflow-x:hidden;
 }
 
-/* DARK MODE BUTTON */
-.theme-toggle {
+/* GLOBAL */
+section {
+    max-width:1200px;
+    margin:auto;
+    padding:50px 25px;
+}
+h2 {
+    font-size:2.3rem;
+    margin-bottom:20px;
+    color:var(--accent2);
+    letter-spacing:1px;
+}
+
+/* NAVBAR */
+nav {
     position:fixed;
-    top:20px;
-    right:20px;
+    top:0;
+    width:100%;
+    backdrop-filter:blur(14px);
     background:var(--glass);
-    padding:12px 16px;
-    border-radius:10px;
-    backdrop-filter:blur(10px);
-    cursor:pointer;
-    font-size:18px;
-    box-shadow:0 4px 15px var(--shadow);
-    z-index:1000;
-    transition:0.3s;
+    display:flex;
+    justify-content:center;
+    padding:12px 0;
+    z-index:99999;
 }
-.theme-toggle:hover { transform:scale(1.08); }
+nav a {
+    margin:0 20px;
+    color:var(--text);
+    text-decoration:none;
+    font-weight:600;
+    transition:0.2s;
+}
+nav a:hover, nav a.active {
+    color:var(--accent2);
+}
 
-/* HEADER */
-header {
-    padding:100px 20px 70px;
+/* HERO WRAPPER (ALL VERSIONS) */
+.hero-wrapper {
+    position:relative;
+    width:100%;
+    min-height:95vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+}
+
+/* Particle Background */
+#particles {
+    position:absolute;
+    width:100%;
+    height:100%;
+    top:0; left:0;
+    z-index:0;
+}
+
+/* Profile Pic Shared */
+.hero-pic {
+    width:240px;
+    height:240px;
+    border-radius:50%;
+    object-fit:cover;
+    z-index:5;
+    position:relative;
+}
+
+/* HERO TEXT */
+.hero-text {
     text-align:center;
-    background:linear-gradient(135deg,#6a11cb,#2575fc);
-    color:white;
+    z-index:10;
+    margin-top:20px;
 }
-h1 { font-size:3rem; margin:0; }
-
-/* TYPING EFFECT */
+.hero-title {
+    font-size:3rem;
+    font-weight:700;
+    margin-bottom:10px;
+}
 #typing {
-    font-size:1.2rem;
-    margin-top:10px;
+    font-size:1.3rem;
     opacity:0.9;
 }
 
-/* CONTENT LAYOUT */
-section { max-width:1050px; margin:auto; padding:20px; }
+/* HERO CONTAINERS – stacked vertically */
+.hero-section {
+    padding-top:100px;
+    padding-bottom:120px;
+    border-bottom:1px solid var(--glass-bright);
+}
 
+/* 3D FRAMES */
+.frame {
+    position:absolute;
+    width:350px;
+    height:350px;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    z-index:3;
+}
+
+/* CIRCLE HALO */
+.frame.circle {
+    border-radius:50%;
+    border:4px solid var(--accent);
+    box-shadow:0 0 35px var(--accent), 0 0 70px var(--accent2);
+    animation:pulse 3s infinite ease-in-out;
+}
+
+/* HEX FRAME */
+.frame.hex {
+    width:360px; height:360px;
+    clip-path:polygon(
+        50% 0%, 93% 25%, 93% 75%, 
+        50% 100%, 7% 75%, 7% 25%
+    );
+    border:4px solid var(--accent2);
+    box-shadow:0 0 25px var(--accent2);
+    animation:rotateHex 12s linear infinite;
+}
+
+/* DIAMOND FRAME */
+.frame.diamond {
+    width:330px; height:330px;
+    transform:translate(-50%,-50%) rotate(45deg);
+    border:5px solid var(--accent);
+    box-shadow:0 0 30px var(--accent2);
+}
+
+/* CIRCUIT FRAME */
+.frame.circuit {
+    width:380px; height:380px;
+    border:3px dashed var(--accent2);
+    animation:dash 8s linear infinite;
+}
+
+/* SOFT GLOW */
+.frame.glow {
+    width:320px; height:320px;
+    border-radius:50%;
+    box-shadow:0 0 120px var(--accent), inset 0 0 60px var(--accent2);
+    opacity:0.7;
+}
+
+/* KEYFRAMES */
+@keyframes pulse {
+    0% { box-shadow:0 0 25px var(--accent); }
+    50% { box-shadow:0 0 80px var(--accent2); }
+    100% { box-shadow:0 0 25px var(--accent); }
+}
+@keyframes rotateHex {
+    0% { transform:translate(-50%,-50%) rotate(0deg); }
+    100% { transform:translate(-50%,-50%) rotate(360deg); }
+}
+@keyframes dash {
+    to { border-color:var(--accent); }
+}
+
+/* GLASS CARD */
 .glass-card {
-    background:var(--card-bg);
+    background:var(--glass);
     padding:30px;
-    border-radius:16px;
-    margin:30px 0;
-    backdrop-filter:blur(12px);
-    box-shadow:0 8px 25px var(--shadow);
-    transition:0.3s ease;
-}
-.glass-card:hover {
-    transform:translateY(-6px);
+    border-radius:18px;
+    backdrop-filter:blur(18px);
+    box-shadow:0 12px 40px var(--shadow);
+    margin:20px 0;
+    animation:fadeUp 0.8s ease both;
 }
 
-/* GRID FOR PROJECTS */
+/* PROJECT GRID */
 .project-grid {
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
     gap:25px;
 }
-
-/* TILT CARDS */
 .project-card {
-    background:var(--card-bg);
-    border-radius:15px;
-    padding:20px;
-    backdrop-filter:blur(10px);
-    box-shadow:0 8px 22px var(--shadow);
-    transition:0.2s;
+    background:var(--glass);
+    padding:24px;
+    border-radius:16px;
+    backdrop-filter:blur(12px);
+    transition:0.3s;
+    box-shadow:0 8px 28px var(--shadow);
 }
 .project-card:hover {
     transform:translateY(-8px) scale(1.02);
 }
 
-/* LINKS */
-a { color:#4F86FF; font-weight:600; text-decoration:none; }
-a:hover { text-decoration:underline; }
+/* TIMELINE */
+.timeline { position:relative; margin-left:20px; }
+.timeline::before {
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    width:4px;
+    height:100%;
+    background:var(--accent2);
+}
+.timeline-item {
+    margin-left:40px;
+    margin-bottom:45px;
+    padding-left:20px;
+    border-left:2px solid var(--glass-bright);
+}
 
 /* FOOTER */
 footer {
     text-align:center;
     padding:50px;
-    opacity:0.6;
-    font-size:0.9rem;
+    opacity:0.7;
+    font-size:1rem;
 }
 
-/* ANIMATIONS */
+/* FADE ANIMATIONS */
 @keyframes fadeUp {
     from { opacity:0; transform:translateY(20px); }
     to { opacity:1; transform:translateY(0); }
 }
-.glass-card, .project-card { animation:fadeUp 0.8s ease both; }
+
 </style>
 </head>
 
 <body>
 
-<!-- DARK MODE TOGGLE -->
-<div class="theme-toggle" onclick="toggleTheme()">🌙</div>
+<nav>
+    <a href="#hero1">Hero 1</a>
+    <a href="#hero2">Hero 2</a>
+    <a href="#hero3">Hero 3</a>
+    <a href="#hero4">Hero 4</a>
+    <a href="#hero5">Hero 5</a>
+    <a href="#about">About</a>
+    <a href="#education">Education</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+</nav>
 
-<header>
-    <h1>Anisha Katiyar</h1>
-    <div id="typing"></div>
-    <p style="margin-top:15px;">
-        <a href="mailto:ani14kay@umd.edu" style="color:white;">Email</a> •
-        <a href="https://linkedin.com/in/anikayyy" style="color:white;">LinkedIn</a> •
-        <a href="https://github.com/ani14kay" style="color:white;">GitHub</a>
-    </p>
-</header>
+<!-- PARTICLES BACKGROUND -->
+<canvas id="particles"></canvas>
 
-<section>
+<!-- =============== HERO 1 =============== -->
+<div id="hero1" class="hero-section">
+<div class="hero-wrapper">
 
-<!-- ABOUT -->
+    <!-- FRAME 1: Neon Circle Halo -->
+    <div class="frame circle"></div>
+
+    <img src="assets/anisha.png" class="hero-pic">
+
+    <div class="hero-text">
+        <h1 class="hero-title">Anisha Katiyar</h1>
+        <div id="typing"></div>
+    </div>
+
+</div>
+</div>
+
+
+<!-- =============== HERO 2 =============== -->
+<div id="hero2" class="hero-section">
+<div class="hero-wrapper">
+
+    <!-- FRAME 2: Hexagonal Tech Frame -->
+    <div class="frame hex"></div>
+
+    <img src="assets/anisha.png" class="hero-pic">
+
+    <div class="hero-text">
+        <h1 class="hero-title">Anisha Katiyar</h1>
+        <div id="typing"></div>
+    </div>
+
+</div>
+</div>
+
+
+<!-- =============== HERO 3 =============== -->
+<div id="hero3" class="hero-section">
+<div class="hero-wrapper">
+
+    <!-- FRAME 3: Diamond Frame -->
+    <div class="frame diamond"></div>
+
+    <img src="assets/anisha.png" class="hero-pic">
+
+    <div class="hero-text">
+        <h1 class="hero-title">Anisha Katiyar</h1>
+        <div id="typing"></div>
+    </div>
+
+</div>
+</div>
+
+
+<!-- =============== HERO 4 =============== -->
+<div id="hero4" class="hero-section">
+<div class="hero-wrapper">
+
+    <!-- FRAME 4: Circuit-Tech Frame -->
+    <div class="frame circuit"></div>
+
+    <img src="assets/anisha.png" class="hero-pic">
+
+    <div class="hero-text">
+        <h1 class="hero-title">Anisha Katiyar</h1>
+        <div id="typing"></div>
+    </div>
+
+</div>
+</div>
+
+
+<!-- =============== HERO 5 =============== -->
+<div id="hero5" class="hero-section">
+<div class="hero-wrapper">
+
+    <!-- FRAME 5: Soft Neon Glow -->
+    <div class="frame glow"></div>
+
+    <img src="assets/anisha.png" class="hero-pic">
+
+    <div class="hero-text">
+        <h1 class="hero-title">Anisha Katiyar</h1>
+        <div id="typing"></div>
+    </div>
+
+</div>
+</div>
+
+<!-- ===================== ABOUT ===================== -->
+<section id="about">
 <h2>About Me</h2>
 <div class="glass-card">
-<p>I am a Master's student in Applied Machine Learning at the University of Maryland with strong hands-on experience in AI Safety, LLM alignment, Computer Vision, Federated Learning, Cloud Systems, and multilingual NLP. I have delivered large-scale ML solutions at A10 Networks, IIT Bombay, Reliance Jio, and more. My interests include applied ML, multi-modal LLMs, optimization, scalable ML systems, and generative AI.</p>
+<p>
+I am a Master's student in Applied Machine Learning at the University of Maryland with strong hands-on 
+experience in AI Safety, LLM alignment, Computer Vision, Federated Learning, Cloud Systems, Document AI, 
+and multilingual NLP. I have delivered scalable ML solutions at A10 Networks, IIT Bombay, Reliance Jio, 
+and IIIT Vadodara. My interests include applied ML, multi-modal LLMs, optimization, large-scale systems, 
+generative AI, cross-lingual modeling, and safety evaluation pipelines.
+</p>
 </div>
+</section>
 
-<!-- EDUCATION -->
+
+<!-- ===================== EDUCATION ===================== -->
+<section id="education">
 <h2>Education</h2>
-<div class="glass-card">
-    <h3>University of Maryland – MS in Applied Machine Learning</h3>
-    <p><b>GPA:</b> 3.95/4.0 (2024–Present)</p>
-    <p><b>Coursework:</b> Principles of ML, Deep Learning, Data Science, Probability & Statistics, Optimization, Algorithms & Data Structures for ML, ML Systems.</p>
+<div class="glass-card timeline">
 
-    <h3>IIIT Vadodara – B.Tech in Computer Science & Engineering</h3>
-    <p><b>CPI:</b> 8.43/10 (2020–2024)</p>
-    <p><b>Coursework:</b> AI, ML & DL, Computer Vision, Distributed Computing, Quantum Computing, Topological Data Analysis, Cryptography, OS, DS&A, Algebra, and Discrete Mathematics.</p>
+<div class="timeline-item">
+<h3>University of Maryland – MS in Applied Machine Learning</h3>
+<p><b>GPA:</b> 3.95/4.0 (2024–Present)</p>
+<p><b>Relevant Coursework:</b> Principles of ML, Deep Learning, Data Science, Probability & Statistics, 
+Optimization, Algorithms & Data Structures for ML, ML Systems.</p>
 </div>
 
-<!-- EXPERIENCE -->
-<h2>Experience</h2>
-<div class="glass-card">
-<h3>A10 Networks – AI Trust & Safety Engineer Intern (2025)</h3>
-<ul>
-    <li>Led alignment benchmarking across 15 high-risk categories using GPT-4o, Claude, Gemini, Llama, DeepSeek, and others.</li>
-    <li>Developed automated evaluation pipelines using Python & Jinja2 across 50+ curated datasets.</li>
-    <li>Engineered PII Redaction system using Microsoft Presidio + fine-tuned DeBERTa-v3, achieving >93% F1 on 56+ PII types.</li>
-    <li>Built interactive Safety Leaderboard using OpenAI, HF, and TogetherAI real-time APIs.</li>
-    <li>Optimized multi-GPU pipelines using CUDA + PyTorch for high-throughput model evaluation.</li>
-    <li>Extended guardrails to multilingual contexts using BLEU, perplexity, embedding similarity & LLM-based translation pipelines.</li>
-</ul>
+<div class="timeline-item">
+<h3>IIIT Vadodara – B.Tech in Computer Science & Engineering</h3>
+<p><b>CPI:</b> 8.43/10 (2020–2024)</p>
+<p><b>Relevant Coursework:</b> AI, ML & DL, Computer Vision, Distributed Computing, Quantum Computing, 
+Topological Data Analysis, Cryptography, OS, DS&A, Algebra, Discrete Math.</p>
+</div>
 
-<h3>IIT Bombay – ML Research Intern (2023)</h3>
+</div>
+</section>
+
+
+<!-- ===================== EXPERIENCE ===================== -->
+<section id="experience">
+<h2>Experience</h2>
+<div class="glass-card timeline">
+
+
+<!-- A10 Networks -->
+<div class="timeline-item">
+<h3>A10 Networks – AI Trust & Safety Engineer Intern</h3>
+<p><i>May 2025 – Aug 2025</i></p>
 <ul>
-    <li>Contributed to Project Udaan’s LLM-based document understanding pipeline.</li>
-    <li>Spearheaded handwriting/printed text research using IITB’s proprietary LLM.</li>
-    <li>Integrated OCR for PDFs, Word, Excel, XML/JSON and semi-structured docs.</li>
+    <li>Led LLM Alignment Benchmarking across 15 high-risk categories (CBRN, NSFW, Disinformation).</li>
+    <li>Evaluated GPT-4o, Claude, Llama, Gemini, DeepSeek, and other frontier models.</li>
+    <li>Developed automated evaluation pipelines using Python + Jinja2 prompting.</li>
+    <li>Measured Refusal Rates, Harmfulness Scores, and Policy Compliance across 50+ curated safety datasets.</li>
+    <li>Engineered production-grade PII Redaction & Masking system using Microsoft Presidio, regex, and fine-tuned DeBERTa-v3.</li>
+    <li>Achieved >93% F1 on 56+ PII categories.</li>
+    <li>Developed a Safety Leaderboard with real-time API integrations (OpenAI, HF, TogetherAI).</li>
+    <li>Optimized CUDA multi-GPU inference pipelines for high-throughput evaluation.</li>
+    <li>Extended guardrails to multilingual contexts using cross-lingual embeddings, BLEU, PPL, EmbSim.</li>
+</ul>
+</div>
+
+
+<!-- IIT Bombay -->
+<div class="timeline-item">
+<h3>IIT Bombay – ML Research Intern for Software Allocation</h3>
+<p><i>May 2023 – Jul 2023</i></p>
+<ul>
+    <li>Contributed to Technology Transfer of Project Udaan from IIT Bombay to BBS Tech.</li>
+    <li>Performed deep-learning-based handwriting & document recognition with IITB’s proprietary LLM.</li>
+    <li>Processed handwritten/printed text, scanned PDFs, Word, Excel, XML/JSON, semi-structured documents.</li>
+    <li>Integrated OCR pipeline into Udaan servers for large-scale document handling.</li>
     <li>Work showcased in a nationwide competition with 100+ teams.</li>
 </ul>
+</div>
 
-<h3>Reliance Jio – Machine Learning Intern (2022)</h3>
-<ul>
-    <li>Developed ML modules for textual clustering, classification, and feature-based differentiation.</li>
-    <li>Improved enterprise dashboard inference latency via feature engineering.</li>
-</ul>
 
-<h3>IIIT Vadodara – Research on Linguistic Phonetics (2022)</h3>
+<!-- IIITV Language Research -->
+<div class="timeline-item">
+<h3>IIIT Vadodara – Research on Linguistic Phonetics & Distribution</h3>
+<p><i>Oct 2022 – Dec 2022</i></p>
 <ul>
-    <li>Analyzed phonetic structures across 20+ Indian languages using IPA.</li>
-    <li>Applied TF-IDF, n-grams, phoneme embeddings, transformers.</li>
-    <li>Implemented PCA, t-SNE & clustering for linguistic divergence modeling.</li>
-</ul>
-
-<h3>IEEE Gujarat Section – Computer Vision Mentee (2022)</h3>
-<ul>
-    <li>Developed OCR system using PaddleOCR + YOLOv5 with 98% accuracy.</li>
-    <li>Deployed 1500+ records for financial document automation.</li>
+    <li>Analyzed phonetic structures across 20+ regional Indian languages using IPA.</li>
+    <li>Applied n-grams, TF-IDF, embeddings, and transformer-based approaches.</li>
+    <li>Implemented PCA, t-SNE, Spectral Clustering, DBSCAN.</li>
+    <li>Achieved 15% improvement in linguistic divergence prediction accuracy.</li>
 </ul>
 </div>
 
-<!-- PROJECTS -->
+
+<!-- Jio -->
+<div class="timeline-item">
+<h3>Reliance Jio – Machine Learning Intern</h3>
+<p><i>May 2022 – Jul 2022</i></p>
+<ul>
+    <li>Developed clustering, classification, and feature-differentiation ML modules.</li>
+    <li>Enhanced real-time inference and dashboard performance through feature engineering.</li>
+</ul>
+</div>
+
+
+<!-- IEEE -->
+<div class="timeline-item">
+<h3>IEEE Gujarat Section – Computer Vision Mentee</h3>
+<p><i>Jun 2022 – Jul 2022</i></p>
+<ul>
+    <li>Developed OCR for credit card recognition using PaddleOCR + YOLOv5.</li>
+    <li>Achieved 98% accuracy and reduced processing time by 25%.</li>
+    <li>Deployed 1500+ records for automated document processing.</li>
+</ul>
+</div>
+
+</div>
+</section>
+
+
+<!-- ===================== PROJECTS ===================== -->
+<section id="projects">
 <h2>Projects</h2>
+
 <div class="project-grid">
 
 <div class="project-card">
-<h3>Containerized Federated Learning (Autonomous Driving)</h3>
+<h3>Containerized Federated Learning for Autonomous Driving</h3>
 <ul>
-    <li>Built YOLOv9 + Flower + Docker federated pipeline.</li>
-    <li>Integrated ClearML + AWS CloudWatch for drift detection.</li>
-    <li>Achieved 3× performance via Optuna-optimized hyperparameters.</li>
+    <li>YOLOv9 + Flower + Docker federated learning pipeline.</li>
+    <li>ClearML + AWS CloudWatch for monitoring & drift detection.</li>
+    <li>3× performance gain using Optuna-optimized hyperparameters.</li>
 </ul>
 </div>
 
 <div class="project-card">
-<h3>OptiCam – Surveillance Camera Placement Optimization</h3>
+<h3>OptiCam: Surveillance Camera Placement Optimization</h3>
 <ul>
-    <li>MILP formulation solved via Gurobi, CBC, GLPK.</li>
-    <li>Simulated visibility using cone-based casting + Bresenham’s algo.</li>
-    <li>Achieved >75% space coverage within constraints.</li>
+    <li>MILP problem solved using Gurobi, CBC, GLPK.</li>
+    <li>Visibility simulation via cone-based ray casting + Bresenham algorithm.</li>
+    <li>Achieved >75% free-space coverage with constraints.</li>
 </ul>
 </div>
 
 <div class="project-card">
-<h3>QuipPy + Kokua – Summarization & QG Assistant</h3>
+<h3>QuipPy + Kokua</h3>
 <ul>
-    <li>Summarization accuracy 95%, QG accuracy 92%.</li>
-    <li>Integrated with Kokua: 7-module personal automation assistant.</li>
+    <li>Deep learning model for summarization (95%) & question generation (92%).</li>
+    <li>Integrated into Kokua, a Python-based 7-module personal assistant.</li>
 </ul>
 </div>
 
 <div class="project-card">
-<h3>Facial Recognition + NNCLR</h3>
+<h3>Facial Recognition & Contrastive Learning</h3>
 <ul>
-    <li>NMF & Deep NMF achieving 95–97% recognition accuracy.</li>
-    <li>Implemented NNCLR contrastive learning for image classification.</li>
+    <li>NMF & Deep NMF achieving 95–97% accuracy.</li>
+    <li>Implemented NNCLR for improved image classification.</li>
 </ul>
 </div>
 
 <div class="project-card">
-<h3>WarranTech – NFT-Backed Warranty System</h3>
+<h3>WarranTech – Blockchain-based Warranty System</h3>
 <ul>
-    <li>MERN + blockchain warranties for ICCCI 2023.</li>
-    <li>Privacy-preserving and transparent tracking.</li>
+    <li>MERN + NFT-based verifiable warranty ecosystem.</li>
+    <li>Submitted to ICCCI 2023.</li>
 </ul>
 </div>
 
 <div class="project-card">
-<h3>Hostelio Manageoma – Hostel Management System</h3>
+<h3>Hostelio Manageoma</h3>
 <ul>
-    <li>SQL-based system for 1000+ students, real-time synced.</li>
+    <li>SQL-based hostel management system for 1000+ students.</li>
+    <li>Real-time data sync & monitoring.</li>
 </ul>
 </div>
-</div>
 
-<!-- LEADERSHIP -->
+</div>
+</section>
+
+
+<!-- ===================== LEADERSHIP ===================== -->
+<section>
 <h2>Leadership & Achievements</h2>
 <div class="glass-card">
 <ul>
-    <li>Mentor & Secretary – MOD5 Dance Crew (2022–2024).</li>
-    <li>Winner – CodeHers 4.0; 3rd Place – CodeHers 3.0.</li>
-    <li>Special Prize – Codestrike 2021.</li>
-    <li>3rd Place – HackIIITV; First-Year Special Prize – Develop Until 50.</li>
-    <li>3rd Place – CFA Conclave Case Study, IIT Indore.</li>
-    <li>Winner – Story Weaving Competition, Natraj 2021.</li>
-    <li>Face Recognition App for AI-for-India Guinness Event.</li>
+    <li>Mentor & Secretary, MOD5 Dance Crew (2022–2024).</li>
+    <li>Winner – CodeHers 4.0 (2022).</li>
+    <li>Third Place – CodeHers 3.0 (2021).</li>
+    <li>Girls’ Special Prize – Codestrike 2021.</li>
+    <li>Third Place – HackIIITV (Team Newbies).</li>
+    <li>Special Prize – Develop Until 50 (Android Track).</li>
+    <li>Third Position – CFA Conclave Case Study, IIT Indore (2023).</li>
+    <li>Winner – Kahani Story Weaving Solo Dance, Natraj 2021.</li>
+    <li>Face Recognition App contributor for AI-for-India Guinness World Record event.</li>
 </ul>
 </div>
-
-<!-- SKILLS -->
-<h2>Skills</h2>
-<div class="glass-card">
-<p><b>Programming:</b> Python, Java, C, C++, SQL (MySQL), Unix Shell, HTML/CSS, LaTeX, Git</p>
-<p><b>Machine Learning & AI:</b> Scikit-learn, TensorFlow, PyTorch, Keras, HuggingFace, YOLOv9, NNCLR, Optuna, Generative AI</p>
-<p><b>Data Science & NLP:</b> Data Analytics, Visualization, Feature Engineering, Federated Learning, OCR, embeddings, cross-lingual NLP</p>
-<p><b>Cloud & Systems:</b> AWS, Google Cloud, Docker, ClearML, Flower, CUDA, multi-GPU training</p>
-</div>
-
 </section>
 
-<footer>
-© 2025 Anisha Katiyar • Designed with ❤️ using ML + Glassmorphism
-</footer>
+
+<!-- ===================== SKILLS ===================== -->
+<section id="skills">
+<h2>Technical Skills</h2>
+<div class="glass-card">
+<p><b>Programming:</b> Python, Java, C, C++, SQL, Unix Shell, HTML/CSS, LaTeX, Git</p>
+<p><b>Machine Learning & AI:</b> Scikit-learn, TensorFlow, PyTorch, Keras, HuggingFace Transformers, YOLOv9, NNCLR, Optuna, Generative AI</p>
+<p><b>Data Science & NLP:</b> Data Analytics, Visualization, Feature Engineering, Federated Learning, OCR, embeddings, cross-lingual NLP</p>
+<p><b>Cloud & Systems:</b> AWS, Google Cloud, Docker, ClearML, Flower, CUDA, multi-GPU training pipelines</p>
+</div>
+</section>
+
+<!-- ===================== JAVASCRIPT ===================== -->
 
 <script>
-// DARK MODE TOGGLE
+// ===================== DARK MODE =====================
 function toggleTheme() {
     const current = document.documentElement.getAttribute("data-theme");
-    document.documentElement.setAttribute("data-theme", current === "dark" ? "light" : "dark");
+    document.documentElement.setAttribute(
+        "data-theme",
+        current === "light" ? "dark" : "light"
+    );
 }
+</script>
 
-// TYPING EFFECT
+<script>
+// ===================== TYPING EFFECT =====================
 const roles = [
     "Applied Machine Learning",
     "AI Safety & Alignment",
@@ -304,23 +598,166 @@ const roles = [
     "Federated Learning",
     "Cloud-Scale ML Systems"
 ];
-let i = 0, j = 0, forward = true;
+let idx = 0, char = 0, forward = true;
 
 function typeEffect() {
-    const typingEl = document.getElementById("typing");
-    const current = roles[i];
+    const target = document.querySelectorAll("#typing");
+    const text = roles[idx];
 
     if (forward) {
-        typingEl.textContent = current.slice(0, ++j);
-        if (j === current.length) { forward = false; setTimeout(typeEffect, 1000); return; }
+        char++;
+        if (char === text.length) forward = false;
     } else {
-        typingEl.textContent = current.slice(0, --j);
-        if (j === 0) { forward = true; i = (i+1)%roles.length; }
+        char--;
+        if (char === 0) { forward = true; idx = (idx + 1) % roles.length; }
     }
+
+    target.forEach(el => el.textContent = text.substring(0, char));
     setTimeout(typeEffect, forward ? 70 : 40);
 }
 typeEffect();
 </script>
+
+
+<script>
+// ===================== PARTICLE BACKGROUND =====================
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+let particles = [];
+
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
+
+// Create particles
+for (let i=0; i<140; i++) {
+    particles.push({
+        x: Math.random()*canvas.width,
+        y: Math.random()*canvas.height,
+        size: Math.random()*3,
+        speedX: Math.random()*1 - 0.5,
+        speedY: Math.random()*1 - 0.5
+    });
+}
+
+function animateParticles() {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.fillStyle = "rgba(122, 88, 255, 0.7)";
+
+    particles.forEach(p => {
+        p.x += p.speedX;
+        p.y += p.speedY;
+
+        if (p.x < 0) p.x = canvas.width;
+        if (p.x > canvas.width) p.x = 0;
+        if (p.y < 0) p.y = canvas.height;
+        if (p.y > canvas.height) p.y = 0;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+    });
+
+    requestAnimationFrame(animateParticles);
+}
+animateParticles();
+</script>
+
+
+<script>
+// ===================== PARALLAX FOLLOW MOUSE =====================
+document.addEventListener("mousemove", (e) => {
+    const layers = document.querySelectorAll(".frame, .hero-pic");
+
+    layers.forEach(layer => {
+        const speed = layer.classList.contains("hero-pic") ? 10 : 40;
+        const x = (window.innerWidth - e.pageX * speed) / 200;
+        const y = (window.innerHeight - e.pageY * speed) / 200;
+
+        layer.style.transform = `translate(${x}px, ${y}px)`;
+    });
+});
+</script>
+
+
+<script>
+// ===================== SCROLL FADE-IN ANIMATIONS =====================
+const faders = document.querySelectorAll(".glass-card, .project-card, .timeline-item");
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = "translateY(0)";
+        }
+    });
+}, { threshold: 0.15 });
+
+faders.forEach(el => {
+    el.style.opacity = 0;
+    el.style.transform = "translateY(25px)";
+    observer.observe(el);
+});
+</script>
+
+
+<script>
+// ===================== NAVBAR SECTION HIGHLIGHT =====================
+const sections = document.querySelectorAll("section, .hero-section");
+const navLinks = document.querySelectorAll("nav a");
+
+window.addEventListener("scroll", () => {
+    let current = "";
+
+    sections.forEach(sec => {
+        const top = sec.offsetTop - 120;
+        if (scrollY >= top) current = sec.getAttribute("id");
+    });
+
+    navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === `#${current}`) {
+            link.classList.add("active");
+        }
+    });
+});
+</script>
+
+
+<script>
+// ===================== 3D TILT CARDS =====================
+const tiltCards = document.querySelectorAll(".project-card");
+
+tiltCards.forEach(card => {
+    card.addEventListener("mousemove", (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+
+        const rotateX = (-y / 20).toFixed(2);
+        const rotateY = (x / 20).toFixed(2);
+
+        card.style.transform = `
+            perspective(800px)
+            rotateX(${rotateX}deg)
+            rotateY(${rotateY}deg)
+            scale(1.06)
+        `;
+    });
+
+    card.addEventListener("mouseleave", () => {
+        card.style.transform = "perspective(800px) rotateX(0) rotateY(0) scale(1)";
+    });
+});
+</script>
+
+
+<footer>
+© 2025 Anisha Katiyar • Designed with ❤️ + AI + Cyber-Glass Aesthetic
+</footer>
 
 </body>
 </html>

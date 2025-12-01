@@ -9,6 +9,65 @@
 <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/0/0a/UMD_Teratoma_Logo.png" />
 
 <style>
+/* THEME PRESETS */
+:root {
+    --bg: #0b0f19;
+    --text: #e6f1ff;
+    --accent: #7f5cff;
+    --accent2: #4acfff;
+    --glass: rgba(255,255,255,0.05);
+    --glass-bright: rgba(255,255,255,0.12);
+}
+
+/* THEME SET 1 — Purple Cyber */
+[data-theme="cyber-purple"] {
+    --bg: #0b0f19;
+    --text: #e6f1ff;
+    --accent: #7f5cff;
+    --accent2: #4acfff;
+    --glass: rgba(255,255,255,0.05);
+    --glass-bright: rgba(255,255,255,0.12);
+}
+
+/* THEME SET 2 — Lavender Glow */
+[data-theme="lavender"] {
+    --bg: #0f0a1f;
+    --text: #f3eaff;
+    --accent: #c084fc;
+    --accent2: #a855f7;
+    --glass: rgba(255,255,255,0.06);
+    --glass-bright: rgba(255,255,255,0.15);
+}
+
+/* THEME SET 3 — Neon Blue */
+[data-theme="neon-blue"] {
+    --bg: #020617;
+    --text: #dbeafe;
+    --accent: #3b82f6;
+    --accent2: #60a5fa;
+    --glass: rgba(255,255,255,0.04);
+    --glass-bright: rgba(255,255,255,0.14);
+}
+
+/* THEME SET 4 — Magenta Shock */
+[data-theme="magenta"] {
+    --bg: #160010;
+    --text: #ffd6f6;
+    --accent: #ff007f;
+    --accent2: #ff4db8;
+    --glass: rgba(255,255,255,0.05);
+    --glass-bright: rgba(255,255,255,0.13);
+}
+
+/* THEME SET 5 — Teal Aura */
+[data-theme="teal"] {
+    --bg: #00211f;
+    --text: #e0fffa;
+    --accent: #00d4b6;
+    --accent2: #5ffbf1;
+    --glass: rgba(255,255,255,0.05);
+    --glass-bright: rgba(255,255,255,0.16);
+}
 
 /* ROOT THEMES */
 :root {
@@ -675,6 +734,17 @@ tiltCards.forEach(card => {
         card.style.transform = "perspective(800px) rotateX(0) rotateY(0) scale(1)";
     });
 });
+</script>
+
+<script>
+const themes = ["cyber-purple", "lavender", "neon-blue", "magenta", "teal"];
+
+function applyRandomTheme() {
+    const theme = themes[Math.floor(Math.random() * themes.length)];
+    document.documentElement.setAttribute("data-theme", theme);
+}
+
+applyRandomTheme();
 </script>
 
 

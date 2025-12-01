@@ -78,7 +78,7 @@ nav a:hover, nav a.active {
     color:var(--accent2);
 }
 
-/* HERO WRAPPER (ALL VERSIONS) */
+/* HERO WRAPPER */
 .hero-wrapper {
     display: flex;
     flex-direction: column;
@@ -88,10 +88,35 @@ nav a:hover, nav a.active {
     padding-top: 80px;
 }
 
+/* Profile Pic */
+.hero-pic {
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    object-fit: cover;
+    z-index: 5;
+    position: relative;
+}
+
+/* Text */
+.hero-text {
+    text-align: center;
+    z-index: 10;
+    margin-top: 28px;
+}
+.hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+#typing {
+    font-size: 1.3rem;
+    opacity: 0.9;
+    margin-top: 6px;
+}
 .hero-sub {
-    margin-top: 12px;
-    font-size: 1rem;
-    opacity: 0.8;
+    margin-top: 14px;
+    opacity: 0.85;
 }
 .hero-sub a {
     color: var(--accent2);
@@ -99,6 +124,30 @@ nav a:hover, nav a.active {
 }
 .hero-sub a:hover {
     text-decoration: underline;
+}
+
+/* Halo Frame */
+.frame.circle {
+    position: absolute;
+    border-radius: 50%;
+    width: 380px;
+    height: 380px;
+    border: 3px solid var(--accent);
+    box-shadow:
+        0 0 35px var(--accent),
+        0 0 80px var(--accent2),
+        inset 0 0 25px var(--accent2);
+    animation: pulse 4s infinite ease-in-out;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 25px var(--accent); }
+    50% { box-shadow: 0 0 80px var(--accent2); }
+    100% { box-shadow: 0 0 25px var(--accent); }
 }
 
 
@@ -111,31 +160,6 @@ nav a:hover, nav a.active {
     z-index:0;
 }
 
-/* Profile Pic Shared */
-.hero-pic {
-    width:240px;
-    height:240px;
-    border-radius:50%;
-    object-fit:cover;
-    z-index:5;
-    position:relative;
-}
-
-/* HERO TEXT */
-.hero-text {
-    text-align:center;
-    z-index:10;
-    margin-top:20px;
-}
-.hero-title {
-    font-size:3rem;
-    font-weight:700;
-    margin-bottom:10px;
-}
-#typing {
-    font-size:1.3rem;
-    opacity:0.9;
-}
 
 /* HERO CONTAINERS – stacked vertically */
 .hero-section {
@@ -144,36 +168,6 @@ nav a:hover, nav a.active {
     border-bottom:1px solid var(--glass-bright);
 }
 
-/* 3D FRAMES */
-.frame {
-    position:absolute;
-    width:350px;
-    height:350px;
-    top:50%;
-    left:50%;
-    transform:translate(-50%, -50%);
-    z-index:3;
-}
-
-/* CIRCLE HALO */
-.frame.circle {
-    border-radius: 50%;
-    border: 3px solid var(--accent);
-    width: 380px;
-    height: 380px;
-    box-shadow:
-        0 0 35px var(--accent),
-        0 0 80px var(--accent2),
-        inset 0 0 25px var(--accent2);
-    animation: pulse 4s infinite ease-in-out;
-}
-
-/* KEYFRAMES */
-@keyframes pulse {
-    0% { box-shadow:0 0 25px var(--accent); }
-    50% { box-shadow:0 0 80px var(--accent2); }
-    100% { box-shadow:0 0 25px var(--accent); }
-}
 
 /* GLASS CARD */
 .glass-card {
@@ -253,25 +247,7 @@ footer {
 <!-- PARTICLES BACKGROUND -->
 <canvas id="particles"></canvas>
 
-<!-- =============== HERO 1 =============== -->
-<div id="hero1" class="hero-section">
-<div class="hero-wrapper">
-
-    <!-- FRAME 1: Neon Circle Halo -->
-    <div class="hero-unit">
-        <div class="frame circle"></div>
-        <img src="assets/anisha.png" class="hero-pic">
-    </div>
-
-    <div class="hero-text">
-        <h1 class="hero-title">Anisha Katiyar</h1>
-        <div id="typing"></div>
-    </div>
-
-</div>
-</div>
-
-<!-- =============== HERO (FINAL) =============== -->
+<!-- =============== HERO (FINAL & ONLY ONE) =============== -->
 <div id="hero1" class="hero-section">
 <div class="hero-wrapper">
 

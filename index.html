@@ -80,14 +80,32 @@ nav a:hover, nav a.active {
 
 /* HERO WRAPPER (ALL VERSIONS) */
 .hero-wrapper {
-    position:relative;
-    width:100%;
-    min-height:95vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    overflow:hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 90vh;
+    padding-top: 80px;
 }
+
+.hero-text {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.hero-sub {
+    margin-top: 12px;
+    font-size: 1rem;
+    opacity: 0.8;
+}
+.hero-sub a {
+    color: var(--accent2);
+    text-decoration: none;
+}
+.hero-sub a:hover {
+    text-decoration: underline;
+}
+
 
 /* Particle Background */
 #particles {
@@ -144,45 +162,15 @@ nav a:hover, nav a.active {
 
 /* CIRCLE HALO */
 .frame.circle {
-    border-radius:50%;
-    border:4px solid var(--accent);
-    box-shadow:0 0 35px var(--accent), 0 0 70px var(--accent2);
-    animation:pulse 3s infinite ease-in-out;
-}
-
-/* HEX FRAME */
-.frame.hex {
-    width:360px; height:360px;
-    clip-path:polygon(
-        50% 0%, 93% 25%, 93% 75%, 
-        50% 100%, 7% 75%, 7% 25%
-    );
-    border:4px solid var(--accent2);
-    box-shadow:0 0 25px var(--accent2);
-    animation:rotateHex 12s linear infinite;
-}
-
-/* DIAMOND FRAME */
-.frame.diamond {
-    width:330px; height:330px;
-    transform:translate(-50%,-50%) rotate(45deg);
-    border:5px solid var(--accent);
-    box-shadow:0 0 30px var(--accent2);
-}
-
-/* CIRCUIT FRAME */
-.frame.circuit {
-    width:380px; height:380px;
-    border:3px dashed var(--accent2);
-    animation:dash 8s linear infinite;
-}
-
-/* SOFT GLOW */
-.frame.glow {
-    width:320px; height:320px;
-    border-radius:50%;
-    box-shadow:0 0 120px var(--accent), inset 0 0 60px var(--accent2);
-    opacity:0.7;
+    border-radius: 50%;
+    border: 3px solid var(--accent);
+    width: 380px;
+    height: 380px;
+    box-shadow:
+        0 0 35px var(--accent),
+        0 0 80px var(--accent2),
+        inset 0 0 25px var(--accent2);
+    animation: pulse 4s infinite ease-in-out;
 }
 
 /* KEYFRAMES */
@@ -190,13 +178,6 @@ nav a:hover, nav a.active {
     0% { box-shadow:0 0 25px var(--accent); }
     50% { box-shadow:0 0 80px var(--accent2); }
     100% { box-shadow:0 0 25px var(--accent); }
-}
-@keyframes rotateHex {
-    0% { transform:translate(-50%,-50%) rotate(0deg); }
-    100% { transform:translate(-50%,-50%) rotate(360deg); }
-}
-@keyframes dash {
-    to { border-color:var(--accent); }
 }
 
 /* GLASS CARD */
@@ -266,11 +247,7 @@ footer {
 <body>
 
 <nav>
-    <a href="#hero1">Hero 1</a>
-    <a href="#hero2">Hero 2</a>
-    <a href="#hero3">Hero 3</a>
-    <a href="#hero4">Hero 4</a>
-    <a href="#hero5">Hero 5</a>
+    <a href="#hero1">Home</a>
     <a href="#about">About</a>
     <a href="#education">Education</a>
     <a href="#experience">Experience</a>
@@ -299,73 +276,26 @@ footer {
 </div>
 </div>
 
-<!-- =============== HERO 2 =============== -->
-<div id="hero2" class="hero-section">
+<!-- =============== HERO (FINAL) =============== -->
+<div id="hero1" class="hero-section">
 <div class="hero-wrapper">
-    
-    <!-- FRAME 2: Hexagonal Tech Frame -->
+
+    <!-- HERO UNIT (photo + frame) -->
     <div class="hero-unit">
-        <div class="frame hex"></div>
+        <div class="frame circle"></div>
         <img src="assets/anisha.png" class="hero-pic">
     </div>
 
+    <!-- TEXT -->
     <div class="hero-text">
         <h1 class="hero-title">Anisha Katiyar</h1>
         <div id="typing"></div>
-    </div>
 
-</div>
-</div>
-
-<!-- =============== HERO 3 =============== -->
-<div id="hero3" class="hero-section">
-<div class="hero-wrapper">
-
-    <!-- FRAME 3: Glowing Diamond Frame -->
-    <div class="hero-unit">
-        <div class="frame diamond"></div>
-        <img src="assets/anisha.png" class="hero-pic">
-    </div>
-
-    <div class="hero-text">
-        <h1 class="hero-title">Anisha Katiyar</h1>
-        <div id="typing"></div>
-    </div>
-
-</div>
-</div>
-
-<!-- =============== HERO 4 =============== -->
-<div id="hero4" class="hero-section">
-<div class="hero-wrapper">
-
-    <!-- FRAME 4: Circuit-Tech Frame -->
-    <div class="hero-unit">
-        <div class="frame circuit"></div>
-        <img src="assets/anisha.png" class="hero-pic">
-    </div>
-
-    <div class="hero-text">
-        <h1 class="hero-title">Anisha Katiyar</h1>
-        <div id="typing"></div>
-    </div>
-
-</div>
-</div>
-
-<!-- =============== HERO 5 =============== -->
-<div id="hero5" class="hero-section">
-<div class="hero-wrapper">
-
-    <!-- FRAME 5: Soft Neon Glow -->
-    <div class="hero-unit">
-        <div class="frame glow"></div>
-        <img src="assets/anisha.png" class="hero-pic">
-    </div>
-
-    <div class="hero-text">
-        <h1 class="hero-title">Anisha Katiyar</h1>
-        <div id="typing"></div>
+        <div class="hero-sub">
+            <a href="mailto:ani14kay@umd.edu">ani14kay@umd.edu</a> •
+            <a href="https://linkedin.com/in/anikayyy" target="_blank">LinkedIn</a> •
+            <a href="https://github.com/ani14kay" target="_blank">GitHub</a>
+        </div>
     </div>
 
 </div>
@@ -671,15 +601,14 @@ animateParticles();
 <script>
 // ===================== PARALLAX FOLLOW MOUSE (FIXED) =====================
 document.addEventListener("mousemove", (e) => {
-    const units = document.querySelectorAll(".hero-unit");
+    const unit = document.querySelector(".hero-unit");
+    if (!unit) return;
 
-    units.forEach(unit => {
-        const speed = 25;
-        const x = (window.innerWidth / 2 - e.pageX) / speed;
-        const y = (window.innerHeight / 2 - e.pageY) / speed;
+    const speed = 28;
+    const x = (window.innerWidth / 2 - e.clientX) / speed;
+    const y = (window.innerHeight / 2 - e.clientY) / speed;
 
-        unit.style.transform = `translate(${x}px, ${y}px)`;
-    });
+    unit.style.transform = `translate(${x}px, ${y}px)`;
 });
 </script>
 

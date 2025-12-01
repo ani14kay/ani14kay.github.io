@@ -13,6 +13,7 @@
 :root {
     --bg: #0b0f19;
     --text: #e6f1ff;
+    --text-body: #ffffff;
     --accent: #7f5cff;
     --accent2: #4acfff;
     --glass: rgba(255,255,255,0.05);
@@ -23,66 +24,46 @@
 [data-theme="cyber-purple"] {
     --bg: #0b0f19;
     --text: #e6f1ff;
+    --text-body: #ffffff;
     --accent: #7f5cff;
     --accent2: #4acfff;
     --glass: rgba(255,255,255,0.05);
     --glass-bright: rgba(255,255,255,0.12);
 }
 
-/* THEME SET 2 — Lavender Glow */
-[data-theme="lavender"] {
-    --bg: #0f0a1f;
-    --text: #f3eaff;
-    --accent: #c084fc;
-    --accent2: #a855f7;
-    --glass: rgba(255,255,255,0.06);
-    --glass-bright: rgba(255,255,255,0.15);
-}
-
-/* THEME SET 3 — Neon Blue */
+/* THEME SET 2 — Neon Blue */
 [data-theme="neon-blue"] {
     --bg: #020617;
     --text: #dbeafe;
+    --text-body: #ffffff;
     --accent: #3b82f6;
     --accent2: #60a5fa;
     --glass: rgba(255,255,255,0.04);
     --glass-bright: rgba(255,255,255,0.14);
 }
 
-/* THEME SET 4 — Magenta Shock */
+/* THEME SET 3 — Magenta Shock */
 [data-theme="magenta"] {
     --bg: #160010;
     --text: #ffd6f6;
+    --text-body: #ffffff;
     --accent: #ff007f;
     --accent2: #ff4db8;
     --glass: rgba(255,255,255,0.05);
     --glass-bright: rgba(255,255,255,0.13);
 }
 
-/* THEME SET 5 — Teal Aura */
+/* THEME SET 4 — Teal Aura */
 [data-theme="teal"] {
     --bg: #00211f;
     --text: #e0fffa;
+    --text-body: #ffffff;
     --accent: #00d4b6;
     --accent2: #5ffbf1;
     --glass: rgba(255,255,255,0.05);
     --glass-bright: rgba(255,255,255,0.16);
 }
 
-/* ROOT THEMES */
-/*
-:root {
-    --bg: #0b0f19;
-    --text: #e6f1ff;
-    --accent: #7f5cff;
-    --accent2: #4acfff;
-    --glass: rgba(255,255,255,0.05);
-    --glass-bright: rgba(255,255,255,0.12);
-    --card-bg: rgba(255,255,255,0.07);
-    --shadow: rgba(0,0,0,0.45);
-    --grid-line: rgba(255,255,255,0.05);
-}
-*/
 [data-theme="light"] {
     --bg: #f4f7ff;
     --text: #1a1a1a;
@@ -114,6 +95,17 @@ h2 {
     color:var(--accent2);
     letter-spacing:1px;
 }
+    
+/* BODY TEXT — always white */
+p, li, .timeline-item p, .timeline-item li {
+    color: var(--text-body) !important;
+}
+
+/* Job titles stay theme-colored */
+h3 {
+    color: var(--accent);
+}
+
 
 /* NAVBAR */
 nav {
@@ -629,7 +621,11 @@ for (let i=0; i<140; i++) {
 
 function animateParticles() {
     ctx.clearRect(0,0,canvas.width,canvas.height);
-    ctx.fillStyle = "rgba(122, 88, 255, 0.7)";
+    const particleColor = getComputedStyle(document.documentElement)
+    .getPropertyValue('--accent')
+    .trim();
+    ctx.fillStyle = particleColor;
+
 
     particles.forEach(p => {
         p.x += p.speedX;
@@ -738,7 +734,7 @@ tiltCards.forEach(card => {
 </script>
 
 <script>
-const themes = ["cyber-purple", "lavender", "neon-blue", "magenta", "teal"];
+const themes = ["cyber-purple", "neon-blue", "magenta", "teal"];
 
 function applyRandomTheme() {
     const theme = themes[Math.floor(Math.random() * themes.length)];
@@ -750,7 +746,7 @@ applyRandomTheme();
 
 
 <footer>
-© 2025 Anisha Katiyar ❤️ Built with Curiosity, Code, and Creativity!
+© 2025 Anisha Katiyar 🤍 Built with Curiosity, Code, and Creativity!
 </footer>
 
 </body>

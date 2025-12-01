@@ -2,16 +2,163 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>MSML602 Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anisha Katiyar | Portfolio</title>
     <style>
-        body {
-            text-align: center;
-        }
+        body { margin:0; font-family: Arial, sans-serif; background:#f9fafb; color:#1f2937; }
+        header { background:#111827; color:white; text-align:center; padding:50px 20px; }
+        h1 { margin:0; font-size:2.6rem; }
+        h2 { margin-top:50px; color:#111827; letter-spacing:1px; }
+        section { max-width:900px; padding:20px; margin:auto; }
+        .card { background:white; padding:20px; border-radius:8px; margin:25px 0;
+                box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+        ul { padding-left:20px; }
+        a { color:#2563eb; text-decoration:none; }
+        a:hover { text-decoration:underline; }
+        footer { text-align:center; padding:30px; font-size:0.9rem; color:#555; }
     </style>
 </head>
+
 <body>
-    <h1>MSML602</h1>
-    <h4>Anisha Katiyar</h4>
-    <p>Project 0</p>
+
+<header>
+    <h1>Anisha Katiyar</h1>
+    <p>Applied Machine Learning | AI Safety | Computer Vision | NLP</p>
+    <p>
+        <a href="mailto:ani14kay@umd.edu" style="color:#93c5fd;">Email</a> |
+        <a href="https://linkedin.com/in/anikayyy" style="color:#93c5fd;">LinkedIn</a> |
+        <a href="https://github.com/ani14kay" style="color:#93c5fd;">GitHub</a> 
+    </p>
+</header>
+
+<section>
+
+    <h2>About Me</h2>
+    <div class="card">
+        <p>I am a Master's student in Applied Machine Learning at the University of Maryland with strong hands-on experience in AI Safety, LLM alignment, Computer Vision, Federated Learning, and large-scale ML systems. I’ve previously worked at A10 Networks, IIT Bombay, Reliance Jio, and more, where I built production-scale ML pipelines, multilingual safety systems, federated learning setups, and document understanding modules. My interests span applied ML, multimodal LLMs, optimization, and cross-lingual NLP.</p>
+    </div>
+
+    <h2>Education</h2>
+    <div class="card">
+        <h3>University of Maryland, College Park</h3>
+        <p>Master of Science in Applied Machine Learning (GPA: 3.95/4.0)</p>
+        <p><i>2024 – Present</i></p>
+
+        <h3>IIIT Vadodara</h3>
+        <p>B.Tech in Computer Science & Engineering (CPI: 8.43/10)</p>
+        <p><i>2020 – 2024</i></p>
+    </div>
+
+    <h2>Work Experience</h2>
+
+    <div class="card">
+        <h3>A10 Networks — AI Trust & Safety Engineer Intern</h3>
+        <p><i>May 2025 – Aug 2025</i></p>
+        <ul>
+            <li>Led LLM Alignment Benchmarking across 15 high-risk categories (CBRN, NSFW, disinformation) for GPT-4o, Claude, Gemini, Llama, DeepSeek, etc.</li>
+            <li>Built automated evaluation pipelines using Python + Jinja2 on 50+ safety datasets.</li>
+            <li>Developed production-grade PII redaction system using Microsoft Presidio + fine-tuned DeBERTa-v3 (>93% F1 on 56+ PII categories).</li>
+            <li>Created interactive Safety Leaderboard with real-time API integrations (OpenAI, HF, TogetherAI).</li>
+            <li>Optimized multi-GPU pipelines using HuggingFace + PyTorch CUDA.</li>
+            <li>Extended guardrails to multilingual contexts using cross-lingual embeddings, BLEU, PPL, Avg Emb Sim, and translation-based pipelines.</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h3>IIT Bombay — Machine Learning Research Intern</h3>
+        <p><i>May 2023 – Jul 2023</i></p>
+        <ul>
+            <li>Improved Project Udaan’s document understanding pipeline using IITB's proprietary LLM.</li>
+            <li>Integrated OCR modules for handwritten and printed text across PDFs, Word, Excel, JSON/XML.</li>
+            <li>Work showcased in a national competition with 100+ teams.</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h3>Reliance Jio — Machine Learning Intern</h3>
+        <p><i>May 2022 – Jul 2022</i></p>
+        <ul>
+            <li>Built ML modules for clustering, classification, and feature-based differentiation.</li>
+            <li>Improved real-time inference with optimized feature engineering.</li>
+        </ul>
+    </div>
+
+    <h2>Projects</h2>
+
+    <div class="card">
+        <h3>Federated Learning for Autonomous Driving</h3>
+        <ul>
+            <li>Built a YOLOv9 + Flower federated learning pipeline using Docker.</li>
+            <li>Integrated AWS CloudWatch + ClearML monitoring with drift detection.</li>
+            <li>Achieved 3× performance improvement using Optuna-based HPO.</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h3>OptiCam — Surveillance Camera Placement Optimization</h3>
+        <ul>
+            <li>MILP formulation using Gurobi, CBC, GLPK.</li>
+            <li>Simulated visibility via cone-based ray casting + Bresenham’s algorithm.</li>
+            <li>Achieved 75%+ free-space coverage under budget constraints.</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h3>QuipPy & Kokua — Text Summarization + AI Assistant</h3>
+        <ul>
+            <li>Built summarization & question generation model (95% summary accuracy, 92% QG accuracy).</li>
+            <li>Integrated into Kokua, a Python-based personal assistant for multi-module automation.</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h3>Facial Recognition & Contrastive Learning</h3>
+        <ul>
+            <li>Achieved 95–97% face recognition accuracy using NMF & Deep NMF.</li>
+            <li>Implemented NNCLR contrastive learning for image classification.</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h3>WarranTech — Blockchain Warranty System</h3>
+        <ul>
+            <li>MERN-stack e-commerce platform using NFT-based warranty management.</li>
+            <li>Built for ICCCI 2023 submission.</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h3>Hostelio Manageoma — Student & Hostel Management System</h3>
+        <ul>
+            <li>SQL-backed system managing 1,000+ students with real-time sync.</li>
+        </ul>
+    </div>
+
+    <h2>Leadership & Achievements</h2>
+    <div class="card">
+        <ul>
+            <li>Mentor & Secretary, MOD5 Dance Crew (3 years).</li>
+            <li>Winner: CodeHers 4.0; Third Place in CodeHers 3.0.</li>
+            <li>Winner: Story Weaving Competition, IIITV Cultural Fest.</li>
+            <li>HackIIITV: Third Place & First Year Special Award.</li>
+            <li>First in CFA Conclave Case Study (IIT Indore).</li>
+            <li>Part of Guinness Record Event (Face Recognition App for AI-for-India).</li>
+        </ul>
+    </div>
+
+    <h2>Technical Skills</h2>
+    <div class="card">
+        <p><b>Programming:</b> Python, Java, C, C++, SQL, Shell, HTML/CSS</p>
+        <p><b>ML Frameworks:</b> PyTorch, TensorFlow, Keras, Transformers, YOLOv9, Optuna</p>
+        <p><b>NLP & CV:</b> TF-IDF, embeddings, OCR, NNCLR, cross-lingual modeling</p>
+        <p><b>Cloud & Systems:</b> AWS, GCP, Docker, ClearML, Flower, CUDA</p>
+    </div>
+
+</section>
+
+<footer>
+    © 2025 Anisha Katiyar | Hosted on GitHub Pages
+</footer>
+
 </body>
 </html>

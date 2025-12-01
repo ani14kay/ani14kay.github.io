@@ -1,33 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anisha Katiyar | Portfolio</title>
-    <style>
-        body { margin:0; font-family: Arial, sans-serif; background:#f9fafb; color:#1f2937; }
-        header { background:#111827; color:white; text-align:center; padding:50px 20px; }
-        h1 { margin:0; font-size:2.6rem; }
-        h2 { margin-top:50px; color:#111827; letter-spacing:1px; }
-        section { max-width:900px; padding:20px; margin:auto; }
-        .card { background:white; padding:20px; border-radius:8px; margin:25px 0;
-                box-shadow:0 2px 8px rgba(0,0,0,0.06); }
-        ul { padding-left:20px; }
-        a { color:#2563eb; text-decoration:none; }
-        a:hover { text-decoration:underline; }
-        footer { text-align:center; padding:30px; font-size:0.9rem; color:#555; }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Anisha Katiyar | Portfolio</title>
+
+<!-- FAVICON -->
+<link rel="icon" href="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/ai.svg" />
+
+<style>
+    /* GLOBAL */
+    body {
+        margin: 0;
+        font-family: "Inter", Arial, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        transition: background 0.4s, color 0.4s;
+    }
+
+    :root {
+        --bg: #f5f5f7;
+        --text: #1a1a1a;
+        --card-bg: white;
+        --accent: #2563eb;
+    }
+
+    [data-theme="dark"] {
+        --bg: #0d1117;
+        --text: #e6edf3;
+        --card-bg: #161b22;
+        --accent: #58a6ff;
+    }
+
+    header {
+        text-align: center;
+        padding: 60px 20px;
+        background: linear-gradient(135deg, #6a11cb, #2575fc);
+        color: white;
+        animation: fadeIn 1s ease-out;
+    }
+
+    h1 { font-size: 3rem; margin: 0; }
+    h2 { margin-top: 50px; font-size: 1.9rem; letter-spacing: 1px; }
+    p { line-height: 1.6; }
+
+    /* LAYOUT */
+    section {
+        max-width: 1000px;
+        margin: auto;
+        padding: 20px;
+    }
+
+    .card {
+        background: var(--card-bg);
+        border-radius: 12px;
+        padding: 25px;
+        margin: 30px 0;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.07);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        animation: slideUp 0.5s ease both;
+    }
+
+    .card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 45px rgba(0,0,0,0.12);
+    }
+
+    /* PROJECT CARDS */
+    .project-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 25px;
+    }
+
+    .project-card {
+        background: var(--card-bg);
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        transition: 0.3s ease;
+        animation: fadeIn 0.7s ease both;
+    }
+
+    .project-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+    }
+
+    .project-card h3 {
+        margin-top: 0;
+    }
+
+    /* LINKS */
+    a {
+        color: var(--accent);
+        text-decoration: none;
+        font-weight: 500;
+    }
+    a:hover { text-decoration: underline; }
+
+    /* DARK MODE TOGGLE */
+    .theme-toggle {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: var(--card-bg);
+        padding: 10px 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.12);
+        transition: 0.3s ease;
+    }
+    .theme-toggle:hover {
+        transform: scale(1.05);
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    footer {
+        text-align: center;
+        padding: 40px;
+        opacity: 0.7;
+    }
+</style>
 </head>
 
 <body>
 
+<!-- DARK MODE BUTTON -->
+<div class="theme-toggle" onclick="toggleTheme()">🌙</div>
+
 <header>
     <h1>Anisha Katiyar</h1>
-    <p>Applied Machine Learning | AI Safety | Computer Vision | NLP</p>
+    <p>Applied Machine Learning | AI Safety | Computer Vision | NLP | Federated Learning</p>
     <p>
-        <a href="mailto:ani14kay@umd.edu" style="color:#93c5fd;">Email</a> |
-        <a href="https://linkedin.com/in/anikayyy" style="color:#93c5fd;">LinkedIn</a> |
-        <a href="https://github.com/ani14kay" style="color:#93c5fd;">GitHub</a> 
+        <a href="mailto:ani14kay@umd.edu">Email</a> •
+        <a href="https://linkedin.com/in/anikayyy">LinkedIn</a> •
+        <a href="https://github.com/ani14kay">GitHub</a>
     </p>
 </header>
 
@@ -35,130 +152,68 @@
 
     <h2>About Me</h2>
     <div class="card">
-        <p>I am a Master's student in Applied Machine Learning at the University of Maryland with strong hands-on experience in AI Safety, LLM alignment, Computer Vision, Federated Learning, and large-scale ML systems. I’ve previously worked at A10 Networks, IIT Bombay, Reliance Jio, and more, where I built production-scale ML pipelines, multilingual safety systems, federated learning setups, and document understanding modules. My interests span applied ML, multimodal LLMs, optimization, and cross-lingual NLP.</p>
+        <p>I am a Master's student in Applied Machine Learning at UMD with experience in AI Safety, LLM alignment, Federated Learning, CV, and multilingual NLP. I’ve built large-scale ML systems at A10 Networks, IIT Bombay, Reliance Jio, and more. My interests include scalable ML systems, generative AI, cross-lingual modeling, optimization, and multi-modal LLMs.</p>
     </div>
 
-    <h2>Education</h2>
-    <div class="card">
-        <h3>University of Maryland, College Park</h3>
-        <p>Master of Science in Applied Machine Learning (GPA: 3.95/4.0)</p>
-        <p><i>2024 – Present</i></p>
+    <h2>Featured Projects</h2>
 
-        <h3>IIIT Vadodara</h3>
-        <p>B.Tech in Computer Science & Engineering (CPI: 8.43/10)</p>
-        <p><i>2020 – 2024</i></p>
+    <div class="project-grid">
+
+        <div class="project-card">
+            <h3>Federated Learning for Autonomous Driving</h3>
+            <p>YOLOv9 + Flower + Docker with AWS CloudWatch monitoring and automated drift detection.</p>
+            <p><a href="#">View Project →</a></p>
+        </div>
+
+        <div class="project-card">
+            <h3>OptiCam – Camera Placement Optimization</h3>
+            <p>MILP-based optimization using Gurobi, CBC, and GLPK. Achieved 75% coverage under constraints.</p>
+            <p><a href="#">View Project →</a></p>
+        </div>
+
+        <div class="project-card">
+            <h3>QuipPy + Kokua</h3>
+            <p>Summarization (95%) + QG (92%) integrated into a Python personal assistant with 7 modules.</p>
+            <p><a href="#">View Project →</a></p>
+        </div>
+
+        <div class="project-card">
+            <h3>Facial Recognition + NNCLR</h3>
+            <p>Implemented NMF & Deep NMF achieving 95-97% accuracy for face recognition.</p>
+            <p><a href="#">View Project →</a></p>
+        </div>
+
     </div>
 
-    <h2>Work Experience</h2>
-
+    <h2>Experience</h2>
     <div class="card">
-        <h3>A10 Networks — AI Trust & Safety Engineer Intern</h3>
-        <p><i>May 2025 – Aug 2025</i></p>
-        <ul>
-            <li>Led LLM Alignment Benchmarking across 15 high-risk categories (CBRN, NSFW, disinformation) for GPT-4o, Claude, Gemini, Llama, DeepSeek, etc.</li>
-            <li>Built automated evaluation pipelines using Python + Jinja2 on 50+ safety datasets.</li>
-            <li>Developed production-grade PII redaction system using Microsoft Presidio + fine-tuned DeBERTa-v3 (>93% F1 on 56+ PII categories).</li>
-            <li>Created interactive Safety Leaderboard with real-time API integrations (OpenAI, HF, TogetherAI).</li>
-            <li>Optimized multi-GPU pipelines using HuggingFace + PyTorch CUDA.</li>
-            <li>Extended guardrails to multilingual contexts using cross-lingual embeddings, BLEU, PPL, Avg Emb Sim, and translation-based pipelines.</li>
-        </ul>
+        <h3>A10 Networks — AI Trust & Safety Intern (2025)</h3>
+        <p>Built multilingual guardrails, PII redaction with DeBERTa, LLM benchmarking pipelines & safety leaderboard.</p>
+        <h3>IIT Bombay — ML Research Intern (2023)</h3>
+        <p>OCR + document understanding using IITB’s proprietary LLM for national-scale deployment.</p>
+        <h3>Reliance Jio — ML Intern (2022)</h3>
+        <p>Clustering, classification & feature-based differentiation pipelines for enterprise customers.</p>
     </div>
 
+    <h2>Skills</h2>
     <div class="card">
-        <h3>IIT Bombay — Machine Learning Research Intern</h3>
-        <p><i>May 2023 – Jul 2023</i></p>
-        <ul>
-            <li>Improved Project Udaan’s document understanding pipeline using IITB's proprietary LLM.</li>
-            <li>Integrated OCR modules for handwritten and printed text across PDFs, Word, Excel, JSON/XML.</li>
-            <li>Work showcased in a national competition with 100+ teams.</li>
-        </ul>
-    </div>
-
-    <div class="card">
-        <h3>Reliance Jio — Machine Learning Intern</h3>
-        <p><i>May 2022 – Jul 2022</i></p>
-        <ul>
-            <li>Built ML modules for clustering, classification, and feature-based differentiation.</li>
-            <li>Improved real-time inference with optimized feature engineering.</li>
-        </ul>
-    </div>
-
-    <h2>Projects</h2>
-
-    <div class="card">
-        <h3>Federated Learning for Autonomous Driving</h3>
-        <ul>
-            <li>Built a YOLOv9 + Flower federated learning pipeline using Docker.</li>
-            <li>Integrated AWS CloudWatch + ClearML monitoring with drift detection.</li>
-            <li>Achieved 3× performance improvement using Optuna-based HPO.</li>
-        </ul>
-    </div>
-
-    <div class="card">
-        <h3>OptiCam — Surveillance Camera Placement Optimization</h3>
-        <ul>
-            <li>MILP formulation using Gurobi, CBC, GLPK.</li>
-            <li>Simulated visibility via cone-based ray casting + Bresenham’s algorithm.</li>
-            <li>Achieved 75%+ free-space coverage under budget constraints.</li>
-        </ul>
-    </div>
-
-    <div class="card">
-        <h3>QuipPy & Kokua — Text Summarization + AI Assistant</h3>
-        <ul>
-            <li>Built summarization & question generation model (95% summary accuracy, 92% QG accuracy).</li>
-            <li>Integrated into Kokua, a Python-based personal assistant for multi-module automation.</li>
-        </ul>
-    </div>
-
-    <div class="card">
-        <h3>Facial Recognition & Contrastive Learning</h3>
-        <ul>
-            <li>Achieved 95–97% face recognition accuracy using NMF & Deep NMF.</li>
-            <li>Implemented NNCLR contrastive learning for image classification.</li>
-        </ul>
-    </div>
-
-    <div class="card">
-        <h3>WarranTech — Blockchain Warranty System</h3>
-        <ul>
-            <li>MERN-stack e-commerce platform using NFT-based warranty management.</li>
-            <li>Built for ICCCI 2023 submission.</li>
-        </ul>
-    </div>
-
-    <div class="card">
-        <h3>Hostelio Manageoma — Student & Hostel Management System</h3>
-        <ul>
-            <li>SQL-backed system managing 1,000+ students with real-time sync.</li>
-        </ul>
-    </div>
-
-    <h2>Leadership & Achievements</h2>
-    <div class="card">
-        <ul>
-            <li>Mentor & Secretary, MOD5 Dance Crew (3 years).</li>
-            <li>Winner: CodeHers 4.0; Third Place in CodeHers 3.0.</li>
-            <li>Winner: Story Weaving Competition, IIITV Cultural Fest.</li>
-            <li>HackIIITV: Third Place & First Year Special Award.</li>
-            <li>First in CFA Conclave Case Study (IIT Indore).</li>
-            <li>Part of Guinness Record Event (Face Recognition App for AI-for-India).</li>
-        </ul>
-    </div>
-
-    <h2>Technical Skills</h2>
-    <div class="card">
-        <p><b>Programming:</b> Python, Java, C, C++, SQL, Shell, HTML/CSS</p>
-        <p><b>ML Frameworks:</b> PyTorch, TensorFlow, Keras, Transformers, YOLOv9, Optuna</p>
-        <p><b>NLP & CV:</b> TF-IDF, embeddings, OCR, NNCLR, cross-lingual modeling</p>
-        <p><b>Cloud & Systems:</b> AWS, GCP, Docker, ClearML, Flower, CUDA</p>
+        <p><b>Languages:</b> Python, Java, C++, SQL</p>
+        <p><b>ML:</b> PyTorch, TensorFlow, HuggingFace, YOLOv9, Optuna, ClearML</p>
+        <p><b>Cloud & Systems:</b> AWS, GCP, Docker, CUDA, Flower</p>
     </div>
 
 </section>
 
 <footer>
-    © 2025 Anisha Katiyar | Hosted on GitHub Pages
+    © 2025 Anisha Katiyar • Built with ❤️ and ML
 </footer>
+
+<script>
+function toggleTheme() {
+    const current = document.documentElement.getAttribute("data-theme");
+    document.documentElement.setAttribute("data-theme", current === "dark" ? "light" : "dark");
+}
+</script>
 
 </body>
 </html>

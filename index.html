@@ -1,218 +1,326 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Anisha Katiyar | Portfolio</title>
 
+<!-- GOOGLE FONTS -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 <!-- FAVICON -->
-<link rel="icon" href="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/ai.svg" />
+<link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/0/0a/UMD_Teratoma_Logo.png" />
 
 <style>
-    /* GLOBAL */
-    body {
-        margin: 0;
-        font-family: "Inter", Arial, sans-serif;
-        background: var(--bg);
-        color: var(--text);
-        transition: background 0.4s, color 0.4s;
-    }
+/* ROOT VARIABLES */
+:root {
+    --bg: #f5f5f7;
+    --text: #1a1a1a;
+    --card-bg: rgba(255,255,255,0.65);
+    --glass: rgba(255,255,255,0.2);
+    --accent: #6a11cb;
+    --shadow: rgba(0,0,0,0.08);
+}
 
-    :root {
-        --bg: #f5f5f7;
-        --text: #1a1a1a;
-        --card-bg: white;
-        --accent: #2563eb;
-    }
+[data-theme="dark"] {
+    --bg: #0d1117;
+    --text: #e6edf3;
+    --card-bg: rgba(22,27,34,0.55);
+    --glass: rgba(255,255,255,0.05);
+    --accent: #9b6cff;
+    --shadow: rgba(0,0,0,0.3);
+}
 
-    [data-theme="dark"] {
-        --bg: #0d1117;
-        --text: #e6edf3;
-        --card-bg: #161b22;
-        --accent: #58a6ff;
-    }
+body {
+    margin:0;
+    font-family:'Inter', sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    transition:0.3s;
+}
 
-    header {
-        text-align: center;
-        padding: 60px 20px;
-        background: linear-gradient(135deg, #6a11cb, #2575fc);
-        color: white;
-        animation: fadeIn 1s ease-out;
-    }
+/* DARK MODE BUTTON */
+.theme-toggle {
+    position:fixed;
+    top:20px;
+    right:20px;
+    background:var(--glass);
+    padding:12px 16px;
+    border-radius:10px;
+    backdrop-filter:blur(10px);
+    cursor:pointer;
+    font-size:18px;
+    box-shadow:0 4px 15px var(--shadow);
+    z-index:1000;
+    transition:0.3s;
+}
+.theme-toggle:hover { transform:scale(1.08); }
 
-    h1 { font-size: 3rem; margin: 0; }
-    h2 { margin-top: 50px; font-size: 1.9rem; letter-spacing: 1px; }
-    p { line-height: 1.6; }
+/* HEADER */
+header {
+    padding:100px 20px 70px;
+    text-align:center;
+    background:linear-gradient(135deg,#6a11cb,#2575fc);
+    color:white;
+}
+h1 { font-size:3rem; margin:0; }
 
-    /* LAYOUT */
-    section {
-        max-width: 1000px;
-        margin: auto;
-        padding: 20px;
-    }
+/* TYPING EFFECT */
+#typing {
+    font-size:1.2rem;
+    margin-top:10px;
+    opacity:0.9;
+}
 
-    .card {
-        background: var(--card-bg);
-        border-radius: 12px;
-        padding: 25px;
-        margin: 30px 0;
-        box-shadow: 0 8px 30px rgba(0,0,0,0.07);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        animation: slideUp 0.5s ease both;
-    }
+/* CONTENT LAYOUT */
+section { max-width:1050px; margin:auto; padding:20px; }
 
-    .card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 12px 45px rgba(0,0,0,0.12);
-    }
+.glass-card {
+    background:var(--card-bg);
+    padding:30px;
+    border-radius:16px;
+    margin:30px 0;
+    backdrop-filter:blur(12px);
+    box-shadow:0 8px 25px var(--shadow);
+    transition:0.3s ease;
+}
+.glass-card:hover {
+    transform:translateY(-6px);
+}
 
-    /* PROJECT CARDS */
-    .project-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 25px;
-    }
+/* GRID FOR PROJECTS */
+.project-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    gap:25px;
+}
 
-    .project-card {
-        background: var(--card-bg);
-        border-radius: 12px;
-        padding: 20px;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-        transition: 0.3s ease;
-        animation: fadeIn 0.7s ease both;
-    }
+/* TILT CARDS */
+.project-card {
+    background:var(--card-bg);
+    border-radius:15px;
+    padding:20px;
+    backdrop-filter:blur(10px);
+    box-shadow:0 8px 22px var(--shadow);
+    transition:0.2s;
+}
+.project-card:hover {
+    transform:translateY(-8px) scale(1.02);
+}
 
-    .project-card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 12px 35px rgba(0,0,0,0.15);
-    }
+/* LINKS */
+a { color:#4F86FF; font-weight:600; text-decoration:none; }
+a:hover { text-decoration:underline; }
 
-    .project-card h3 {
-        margin-top: 0;
-    }
+/* FOOTER */
+footer {
+    text-align:center;
+    padding:50px;
+    opacity:0.6;
+    font-size:0.9rem;
+}
 
-    /* LINKS */
-    a {
-        color: var(--accent);
-        text-decoration: none;
-        font-weight: 500;
-    }
-    a:hover { text-decoration: underline; }
-
-    /* DARK MODE TOGGLE */
-    .theme-toggle {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: var(--card-bg);
-        padding: 10px 16px;
-        border-radius: 8px;
-        cursor: pointer;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.12);
-        transition: 0.3s ease;
-    }
-    .theme-toggle:hover {
-        transform: scale(1.05);
-    }
-
-    /* ANIMATIONS */
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes slideUp {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-
-    footer {
-        text-align: center;
-        padding: 40px;
-        opacity: 0.7;
-    }
+/* ANIMATIONS */
+@keyframes fadeUp {
+    from { opacity:0; transform:translateY(20px); }
+    to { opacity:1; transform:translateY(0); }
+}
+.glass-card, .project-card { animation:fadeUp 0.8s ease both; }
 </style>
 </head>
 
 <body>
 
-<!-- DARK MODE BUTTON -->
+<!-- DARK MODE TOGGLE -->
 <div class="theme-toggle" onclick="toggleTheme()">🌙</div>
 
 <header>
     <h1>Anisha Katiyar</h1>
-    <p>Applied Machine Learning | AI Safety | Computer Vision | NLP | Federated Learning</p>
-    <p>
-        <a href="mailto:ani14kay@umd.edu">Email</a> •
-        <a href="https://linkedin.com/in/anikayyy">LinkedIn</a> •
-        <a href="https://github.com/ani14kay">GitHub</a>
+    <div id="typing"></div>
+    <p style="margin-top:15px;">
+        <a href="mailto:ani14kay@umd.edu" style="color:white;">Email</a> •
+        <a href="https://linkedin.com/in/anikayyy" style="color:white;">LinkedIn</a> •
+        <a href="https://github.com/ani14kay" style="color:white;">GitHub</a>
     </p>
 </header>
 
 <section>
 
-    <h2>About Me</h2>
-    <div class="card">
-        <p>I am a Master's student in Applied Machine Learning at UMD with experience in AI Safety, LLM alignment, Federated Learning, CV, and multilingual NLP. I’ve built large-scale ML systems at A10 Networks, IIT Bombay, Reliance Jio, and more. My interests include scalable ML systems, generative AI, cross-lingual modeling, optimization, and multi-modal LLMs.</p>
-    </div>
+<!-- ABOUT -->
+<h2>About Me</h2>
+<div class="glass-card">
+<p>I am a Master's student in Applied Machine Learning at the University of Maryland with strong hands-on experience in AI Safety, LLM alignment, Computer Vision, Federated Learning, Cloud Systems, and multilingual NLP. I have delivered large-scale ML solutions at A10 Networks, IIT Bombay, Reliance Jio, and more. My interests include applied ML, multi-modal LLMs, optimization, scalable ML systems, and generative AI.</p>
+</div>
 
-    <h2>Featured Projects</h2>
+<!-- EDUCATION -->
+<h2>Education</h2>
+<div class="glass-card">
+    <h3>University of Maryland – MS in Applied Machine Learning</h3>
+    <p><b>GPA:</b> 3.95/4.0 (2024–Present)</p>
+    <p><b>Coursework:</b> Principles of ML, Deep Learning, Data Science, Probability & Statistics, Optimization, Algorithms & Data Structures for ML, ML Systems.</p>
 
-    <div class="project-grid">
+    <h3>IIIT Vadodara – B.Tech in Computer Science & Engineering</h3>
+    <p><b>CPI:</b> 8.43/10 (2020–2024)</p>
+    <p><b>Coursework:</b> AI, ML & DL, Computer Vision, Distributed Computing, Quantum Computing, Topological Data Analysis, Cryptography, OS, DS&A, Algebra, and Discrete Mathematics.</p>
+</div>
 
-        <div class="project-card">
-            <h3>Federated Learning for Autonomous Driving</h3>
-            <p>YOLOv9 + Flower + Docker with AWS CloudWatch monitoring and automated drift detection.</p>
-            <p><a href="#">View Project →</a></p>
-        </div>
+<!-- EXPERIENCE -->
+<h2>Experience</h2>
+<div class="glass-card">
+<h3>A10 Networks – AI Trust & Safety Engineer Intern (2025)</h3>
+<ul>
+    <li>Led alignment benchmarking across 15 high-risk categories using GPT-4o, Claude, Gemini, Llama, DeepSeek, and others.</li>
+    <li>Developed automated evaluation pipelines using Python & Jinja2 across 50+ curated datasets.</li>
+    <li>Engineered PII Redaction system using Microsoft Presidio + fine-tuned DeBERTa-v3, achieving >93% F1 on 56+ PII types.</li>
+    <li>Built interactive Safety Leaderboard using OpenAI, HF, and TogetherAI real-time APIs.</li>
+    <li>Optimized multi-GPU pipelines using CUDA + PyTorch for high-throughput model evaluation.</li>
+    <li>Extended guardrails to multilingual contexts using BLEU, perplexity, embedding similarity & LLM-based translation pipelines.</li>
+</ul>
 
-        <div class="project-card">
-            <h3>OptiCam – Camera Placement Optimization</h3>
-            <p>MILP-based optimization using Gurobi, CBC, and GLPK. Achieved 75% coverage under constraints.</p>
-            <p><a href="#">View Project →</a></p>
-        </div>
+<h3>IIT Bombay – ML Research Intern (2023)</h3>
+<ul>
+    <li>Contributed to Project Udaan’s LLM-based document understanding pipeline.</li>
+    <li>Spearheaded handwriting/printed text research using IITB’s proprietary LLM.</li>
+    <li>Integrated OCR for PDFs, Word, Excel, XML/JSON and semi-structured docs.</li>
+    <li>Work showcased in a nationwide competition with 100+ teams.</li>
+</ul>
 
-        <div class="project-card">
-            <h3>QuipPy + Kokua</h3>
-            <p>Summarization (95%) + QG (92%) integrated into a Python personal assistant with 7 modules.</p>
-            <p><a href="#">View Project →</a></p>
-        </div>
+<h3>Reliance Jio – Machine Learning Intern (2022)</h3>
+<ul>
+    <li>Developed ML modules for textual clustering, classification, and feature-based differentiation.</li>
+    <li>Improved enterprise dashboard inference latency via feature engineering.</li>
+</ul>
 
-        <div class="project-card">
-            <h3>Facial Recognition + NNCLR</h3>
-            <p>Implemented NMF & Deep NMF achieving 95-97% accuracy for face recognition.</p>
-            <p><a href="#">View Project →</a></p>
-        </div>
+<h3>IIIT Vadodara – Research on Linguistic Phonetics (2022)</h3>
+<ul>
+    <li>Analyzed phonetic structures across 20+ Indian languages using IPA.</li>
+    <li>Applied TF-IDF, n-grams, phoneme embeddings, transformers.</li>
+    <li>Implemented PCA, t-SNE & clustering for linguistic divergence modeling.</li>
+</ul>
 
-    </div>
+<h3>IEEE Gujarat Section – Computer Vision Mentee (2022)</h3>
+<ul>
+    <li>Developed OCR system using PaddleOCR + YOLOv5 with 98% accuracy.</li>
+    <li>Deployed 1500+ records for financial document automation.</li>
+</ul>
+</div>
 
-    <h2>Experience</h2>
-    <div class="card">
-        <h3>A10 Networks — AI Trust & Safety Intern (2025)</h3>
-        <p>Built multilingual guardrails, PII redaction with DeBERTa, LLM benchmarking pipelines & safety leaderboard.</p>
-        <h3>IIT Bombay — ML Research Intern (2023)</h3>
-        <p>OCR + document understanding using IITB’s proprietary LLM for national-scale deployment.</p>
-        <h3>Reliance Jio — ML Intern (2022)</h3>
-        <p>Clustering, classification & feature-based differentiation pipelines for enterprise customers.</p>
-    </div>
+<!-- PROJECTS -->
+<h2>Projects</h2>
+<div class="project-grid">
 
-    <h2>Skills</h2>
-    <div class="card">
-        <p><b>Languages:</b> Python, Java, C++, SQL</p>
-        <p><b>ML:</b> PyTorch, TensorFlow, HuggingFace, YOLOv9, Optuna, ClearML</p>
-        <p><b>Cloud & Systems:</b> AWS, GCP, Docker, CUDA, Flower</p>
-    </div>
+<div class="project-card">
+<h3>Containerized Federated Learning (Autonomous Driving)</h3>
+<ul>
+    <li>Built YOLOv9 + Flower + Docker federated pipeline.</li>
+    <li>Integrated ClearML + AWS CloudWatch for drift detection.</li>
+    <li>Achieved 3× performance via Optuna-optimized hyperparameters.</li>
+</ul>
+<a href="#">GitHub →</a>
+</div>
+
+<div class="project-card">
+<h3>OptiCam – Surveillance Camera Placement Optimization</h3>
+<ul>
+    <li>MILP formulation solved via Gurobi, CBC, GLPK.</li>
+    <li>Simulated visibility using cone-based casting + Bresenham’s algo.</li>
+    <li>Achieved >75% space coverage within constraints.</li>
+</ul>
+</div>
+
+<div class="project-card">
+<h3>QuipPy + Kokua – Summarization & QG Assistant</h3>
+<ul>
+    <li>Summarization accuracy 95%, QG accuracy 92%.</li>
+    <li>Integrated with Kokua: 7-module personal automation assistant.</li>
+</ul>
+</div>
+
+<div class="project-card">
+<h3>Facial Recognition + NNCLR</h3>
+<ul>
+    <li>NMF & Deep NMF achieving 95–97% recognition accuracy.</li>
+    <li>Implemented NNCLR contrastive learning for image classification.</li>
+</ul>
+</div>
+
+<div class="project-card">
+<h3>WarranTech – NFT-Backed Warranty System</h3>
+<ul>
+    <li>MERN + blockchain warranties for ICCCI 2023.</li>
+    <li>Privacy-preserving and transparent tracking.</li>
+</ul>
+</div>
+
+<div class="project-card">
+<h3>Hostelio Manageoma – Hostel Management System</h3>
+<ul>
+    <li>SQL-based system for 1000+ students, real-time synced.</li>
+</ul>
+</div>
+</div>
+
+<!-- LEADERSHIP -->
+<h2>Leadership & Achievements</h2>
+<div class="glass-card">
+<ul>
+    <li>Mentor & Secretary – MOD5 Dance Crew (2022–2024).</li>
+    <li>Winner – CodeHers 4.0; 3rd Place – CodeHers 3.0.</li>
+    <li>Special Prize – Codestrike 2021.</li>
+    <li>3rd Place – HackIIITV; First-Year Special Prize – Develop Until 50.</li>
+    <li>3rd Place – CFA Conclave Case Study, IIT Indore.</li>
+    <li>Winner – Story Weaving Competition, Natraj 2021.</li>
+    <li>Face Recognition App for AI-for-India Guinness Event.</li>
+</ul>
+</div>
+
+<!-- SKILLS -->
+<h2>Skills</h2>
+<div class="glass-card">
+<p><b>Programming:</b> Python, Java, C, C++, SQL (MySQL), Unix Shell, HTML/CSS, LaTeX, Git</p>
+<p><b>Machine Learning & AI:</b> Scikit-learn, TensorFlow, PyTorch, Keras, HuggingFace, YOLOv9, NNCLR, Optuna, Generative AI</p>
+<p><b>Data Science & NLP:</b> Data Analytics, Visualization, Feature Engineering, Federated Learning, OCR, embeddings, cross-lingual NLP</p>
+<p><b>Cloud & Systems:</b> AWS, Google Cloud, Docker, ClearML, Flower, CUDA, multi-GPU training</p>
+</div>
 
 </section>
 
 <footer>
-    © 2025 Anisha Katiyar • Built with ❤️ and ML
+© 2025 Anisha Katiyar • Designed with ❤️ using ML + Glassmorphism
 </footer>
 
 <script>
+// DARK MODE TOGGLE
 function toggleTheme() {
     const current = document.documentElement.getAttribute("data-theme");
     document.documentElement.setAttribute("data-theme", current === "dark" ? "light" : "dark");
 }
+
+// TYPING EFFECT
+const roles = [
+    "Applied Machine Learning",
+    "AI Safety & Alignment",
+    "Computer Vision",
+    "NLP & Cross-Lingual Modeling",
+    "Federated Learning",
+    "Cloud-Scale ML Systems"
+];
+let i = 0, j = 0, forward = true;
+
+function typeEffect() {
+    const typingEl = document.getElementById("typing");
+    const current = roles[i];
+
+    if (forward) {
+        typingEl.textContent = current.slice(0, ++j);
+        if (j === current.length) { forward = false; setTimeout(typeEffect, 1000); return; }
+    } else {
+        typingEl.textContent = current.slice(0, --j);
+        if (j === 0) { forward = true; i = (i+1)%roles.length; }
+    }
+    setTimeout(typeEffect, forward ? 70 : 40);
+}
+typeEffect();
 </script>
 
 </body>

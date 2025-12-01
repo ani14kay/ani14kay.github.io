@@ -90,13 +90,23 @@ nav a:hover, nav a.active {
     
 /* Profile Pic */
 .hero-pic {
-    width: 240px;
-    height: 240px;
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
     object-fit: cover;
-    z-index: 5;
     position: relative;
+    z-index: 5;
 }
+
+/* Halo movement wrapper */
+.halo-wrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
 
 /* Text */
 .hero-text {
@@ -255,9 +265,13 @@ footer {
 
     <!-- HERO UNIT (photo + frame) -->
     <div class="hero-unit">
+    <div class="halo-wrap">
         <div class="frame circle"></div>
-        <img src="assets/anisha.png" class="hero-pic">
     </div>
+
+    <img src="assets/anisha.png" class="hero-pic">
+    </div>
+
 
     <!-- TEXT -->
     <div class="hero-text">
@@ -574,14 +588,14 @@ animateParticles();
 <script>
 // ===================== PARALLAX FOLLOW MOUSE (FIXED) =====================
 document.addEventListener("mousemove", (e) => {
-    const unit = document.querySelector(".hero-unit");
-    if (!unit) return;
+    const halo = document.querySelector(".halo-wrap");
+    if (!halo) return;
 
-    const speed = 28;
+    const speed = 35; /* slower, smoother */
     const x = (window.innerWidth / 2 - e.clientX) / speed;
     const y = (window.innerHeight / 2 - e.clientY) / speed;
 
-    unit.style.transform = `translate(${x}px, ${y}px)`;
+    halo.style.transform = `translate(${x}px, ${y}px)`;
 });
 </script>
 

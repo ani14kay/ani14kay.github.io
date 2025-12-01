@@ -286,9 +286,10 @@ footer {
 <div class="hero-wrapper">
 
     <!-- FRAME 1: Neon Circle Halo -->
-    <div class="frame circle"></div>
-
-    <img src="assets/anisha.png" class="hero-pic">
+    <div class="hero-unit">
+        <div class="frame circle"></div>
+        <img src="assets/anisha.png" class="hero-pic">
+    </div>
 
     <div class="hero-text">
         <h1 class="hero-title">Anisha Katiyar</h1>
@@ -297,16 +298,16 @@ footer {
 
 </div>
 </div>
-
 
 <!-- =============== HERO 2 =============== -->
 <div id="hero2" class="hero-section">
 <div class="hero-wrapper">
-
+    
     <!-- FRAME 2: Hexagonal Tech Frame -->
-    <div class="frame hex"></div>
-
-    <img src="assets/anisha.png" class="hero-pic">
+    <div class="hero-unit">
+        <div class="frame hex"></div>
+        <img src="assets/anisha.png" class="hero-pic">
+    </div>
 
     <div class="hero-text">
         <h1 class="hero-title">Anisha Katiyar</h1>
@@ -315,16 +316,16 @@ footer {
 
 </div>
 </div>
-
 
 <!-- =============== HERO 3 =============== -->
 <div id="hero3" class="hero-section">
 <div class="hero-wrapper">
 
-    <!-- FRAME 3: Diamond Frame -->
-    <div class="frame diamond"></div>
-
-    <img src="assets/anisha.png" class="hero-pic">
+    <!-- FRAME 3: Glowing Diamond Frame -->
+    <div class="hero-unit">
+        <div class="frame diamond"></div>
+        <img src="assets/anisha.png" class="hero-pic">
+    </div>
 
     <div class="hero-text">
         <h1 class="hero-title">Anisha Katiyar</h1>
@@ -333,16 +334,16 @@ footer {
 
 </div>
 </div>
-
 
 <!-- =============== HERO 4 =============== -->
 <div id="hero4" class="hero-section">
 <div class="hero-wrapper">
 
     <!-- FRAME 4: Circuit-Tech Frame -->
-    <div class="frame circuit"></div>
-
-    <img src="assets/anisha.png" class="hero-pic">
+    <div class="hero-unit">
+        <div class="frame circuit"></div>
+        <img src="assets/anisha.png" class="hero-pic">
+    </div>
 
     <div class="hero-text">
         <h1 class="hero-title">Anisha Katiyar</h1>
@@ -352,15 +353,15 @@ footer {
 </div>
 </div>
 
-
 <!-- =============== HERO 5 =============== -->
 <div id="hero5" class="hero-section">
 <div class="hero-wrapper">
 
     <!-- FRAME 5: Soft Neon Glow -->
-    <div class="frame glow"></div>
-
-    <img src="assets/anisha.png" class="hero-pic">
+    <div class="hero-unit">
+        <div class="frame glow"></div>
+        <img src="assets/anisha.png" class="hero-pic">
+    </div>
 
     <div class="hero-text">
         <h1 class="hero-title">Anisha Katiyar</h1>
@@ -668,16 +669,16 @@ animateParticles();
 
 
 <script>
-// ===================== PARALLAX FOLLOW MOUSE =====================
+// ===================== PARALLAX FOLLOW MOUSE (FIXED) =====================
 document.addEventListener("mousemove", (e) => {
-    const layers = document.querySelectorAll(".frame, .hero-pic");
+    const units = document.querySelectorAll(".hero-unit");
 
-    layers.forEach(layer => {
-        const speed = layer.classList.contains("hero-pic") ? 10 : 40;
-        const x = (window.innerWidth - e.pageX * speed) / 200;
-        const y = (window.innerHeight - e.pageY * speed) / 200;
+    units.forEach(unit => {
+        const speed = 25;
+        const x = (window.innerWidth / 2 - e.pageX) / speed;
+        const y = (window.innerHeight / 2 - e.pageY) / speed;
 
-        layer.style.transform = `translate(${x}px, ${y}px)`;
+        unit.style.transform = `translate(${x}px, ${y}px)`;
     });
 });
 </script>

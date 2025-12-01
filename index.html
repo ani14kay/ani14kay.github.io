@@ -78,8 +78,8 @@ nav a:hover, nav a.active {
     color:var(--accent2);
 }
 
-/* HERO WRAPPER */
-.hero-wrapper {
+/* PROFILE WRAPPER */
+.profile-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -89,7 +89,7 @@ nav a:hover, nav a.active {
 }
     
 /* Profile Pic */
-.hero-pic {
+.profile-pic {
     width: 300px;
     height: 300px;
     border-radius: 50%;
@@ -109,12 +109,12 @@ nav a:hover, nav a.active {
 
 
 /* Text */
-.hero-text {
+.profile-text {
     text-align: center;
     z-index: 10;
     margin-top: 28px;
 }
-.hero-title {
+.profile-title {
     font-size: 3rem;
     font-weight: 700;
     margin-bottom: 8px;
@@ -124,15 +124,15 @@ nav a:hover, nav a.active {
     opacity: 0.9;
     margin-top: 6px;
 }
-.hero-sub {
+.profile-sub {
     margin-top: 14px;
     opacity: 0.85;
 }
-.hero-sub a {
+.profile-sub a {
     color: var(--accent2);
     text-decoration: none;
 }
-.hero-sub a:hover {
+.profile-sub a:hover {
     text-decoration: underline;
 }
 
@@ -173,11 +173,17 @@ nav a:hover, nav a.active {
 }
 
 
-/* HERO CONTAINERS – stacked vertically */
-.hero-section {
+/* PROFILE CONTAINERS – stacked vertically */
+.profile-section {
     padding-top:100px;
     padding-bottom:120px;
-    border-bottom:1px solid var(--glass-bright);
+    border-bottom: none;
+}
+.profile-unit {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
@@ -248,7 +254,7 @@ footer {
 <body>
 
 <nav>
-    <a href="#hero1">Home</a>
+    <a href="#profile-section">Home</a>
     <a href="#about">About</a>
     <a href="#education">Education</a>
     <a href="#experience">Experience</a>
@@ -259,26 +265,26 @@ footer {
 <!-- PARTICLES BACKGROUND -->
 <canvas id="particles"></canvas>
 
-<!-- =============== HERO (FINAL & ONLY ONE) =============== -->
-<div id="hero1" class="hero-section">
-<div class="hero-wrapper">
+<!-- =============== PROFILE =============== -->
+<div id="profile-section" class="profile-section">
+<div class="profile-wrapper">
 
-    <!-- HERO UNIT (photo + frame) -->
-    <div class="hero-unit">
+    <!-- PROFILE UNIT (photo + frame) -->
+    <div class="profile-unit">
     <div class="halo-wrap">
         <div class="frame circle"></div>
     </div>
 
-    <img src="assets/anisha.png" class="hero-pic">
+    <img src="assets/anisha.png" class="profile-pic">
     </div>
 
 
     <!-- TEXT -->
-    <div class="hero-text">
-        <h1 class="hero-title">Anisha Katiyar</h1>
+    <div class="profile-text">
+        <h1 class="profile-title">Anisha Katiyar</h1>
         <div id="typing"></div>
 
-        <div class="hero-sub">
+        <div class="profile-sub">
             <a href="mailto:ani14kay@umd.edu">ani14kay@umd.edu</a> •
             <a href="https://linkedin.com/in/anikayyy" target="_blank">LinkedIn</a> •
             <a href="https://github.com/ani14kay" target="_blank">GitHub</a>
@@ -591,11 +597,11 @@ document.addEventListener("mousemove", (e) => {
     const halo = document.querySelector(".halo-wrap");
     if (!halo) return;
 
-    const speed = 35; /* slower, smoother */
-    const x = (window.innerWidth / 2 - e.clientX) / speed;
-    const y = (window.innerHeight / 2 - e.clientY) / speed;
+    const speed = 35;
+    const offsetX = (window.innerWidth / 2 - e.clientX) / speed;
+    const offsetY = (window.innerHeight / 2 - e.clientY) / speed;
 
-    halo.style.transform = `translate(${x}px, ${y}px)`;
+    halo.style.transform = `translate(calc(-50% + ${offsetX}px), calc(-50% + ${offsetY}px))`;
 });
 </script>
 
@@ -623,7 +629,7 @@ faders.forEach(el => {
 
 <script>
 // ===================== NAVBAR SECTION HIGHLIGHT =====================
-const sections = document.querySelectorAll("section, .hero-section");
+const sections = document.querySelectorAll("section, .profile-section");
 const navLinks = document.querySelectorAll("nav a");
 
 window.addEventListener("scroll", () => {
